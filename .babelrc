@@ -1,0 +1,17 @@
+{
+  "presets": [
+    [
+      "@babel/env",
+      {
+        "targets": {
+          "browsers": "Last 2 Chrome versions, Firefox ESR",
+          "node": "10.16"
+        }
+      }
+    ],
+    [
+      "@babel/preset-react"
+    ]
+  ],
+  "plugins": ["transform-flow-strip-types", "@babel/plugin-proposal-class-properties", "@babel/plugin-syntax-dynamic-import"]
+}

@@ -1,0 +1,7 @@
+# Don't lint the following
+snapshots
+node_modules
+logs
+mock
+stories
+.storybook
