@@ -11,7 +11,7 @@ addLocaleData([...en, ...ja]);
 
 class App extends PureComponent  {
   render() {
-    const { className, localeProp="ja-JP" } = this.props;
+    const { className, localeProp="en-GB" } = this.props;
     return (
       <div className={`${className} row`}>
         <IntlProvider locale={localeProp} key={localeProp}>

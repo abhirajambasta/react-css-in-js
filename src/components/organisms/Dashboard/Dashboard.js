@@ -11,7 +11,7 @@ import styles from './Dashboard.style';
 class Dashboard extends PureComponent {
 
   state = {
-    showCampaignType: 'live',
+    showCampaignType: 'past',
   };
 
   onTypeSelection = showCampaignType => {
@@ -26,13 +26,15 @@ class Dashboard extends PureComponent {
 
     return (
       <div className={`${className} col-sm-12 col-md-12 col-lg-12`}>
-        <div className="top-nav">
-          <TopNav />
-        </div>
-        <div className="main-container">
-          <ControlHead onTypeSelection={this.onTypeSelection} showCampaignType={showCampaignType} />
-          <CampaignTable showCampaignType={showCampaignType} campaignsData={campaignsData} />
-        </div>
+        <section>
+          <div className="top-nav">
+            <TopNav />
+          </div>
+          <div className="main-container">
+            <ControlHead onTypeSelection={this.onTypeSelection} showCampaignType={showCampaignType} />
+            <CampaignTable showCampaignType={showCampaignType} campaignsData={campaignsData} />
+          </div>
+        </section>
       </div>
     )
   }

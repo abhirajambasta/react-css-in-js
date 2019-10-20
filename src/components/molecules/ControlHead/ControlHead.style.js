@@ -1,30 +1,30 @@
 import { css } from 'styled-components';
 
 export default css`
-  text-align: center;
   margin-bottom: 40px;
-
-  .campaign-head {
-    padding-left: 10px;
-    font-weight: 700;
-  }
+  border-bottom: 1px solid #f1f1f4;
 
   h1 {
-    margin-bottom: 20px;
-    font-weight: 400;
+    color: #2b416c;
+    font-family: Roboto;
+    font-size: 48px;
+    font-weight: bold;
+    line-height: 50px;
+    margin-bottom: 40px;
   }
 
   .campaign-button {
-    text-transform: uppercase;
-    padding: 4px;
-    background-color: #91b029;
-    color: #fff;
-    margin: 4px;
+    color: #556789;
+    font-family: Roboto;
+    font-size: 18px;
+    line-height: 28px;
+    margin-right: 36px;
+    padding-bottom: 16px;
+    outline: none;
   }
 
   .selected-button {
-    background-color: #fff;
-    color: #91b029;
-    border: 2px solid #91b029;
+    color: ##83A515;
+    border-bottom: 4px solid #83A515;
   }
 `;

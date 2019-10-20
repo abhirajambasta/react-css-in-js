@@ -5,6 +5,10 @@ export default css`
     box-sizing: border-box;
   }
 
+  html, body {
+    overflow-x: hidden;
+  }
+
   body {
     overflow-x: hidden;
     min-width: 320px;

@@ -62,15 +62,15 @@ class CampaignTable extends PureComponent {
     const actionElements = [
       {
         name: 'CSV',
-        image: '',
+        image: 'images/csv.png',
       },
       {
-        name: 'REPORT',
-        image: '',
+        name: 'Report',
+        image: 'images/report.png',
       },
       {
-        name: 'SCHEDULE AGAIN',
-        image: '',
+        name: 'Schdeule Again',
+        image: 'images/schedule.png',
         onClick: index =>
           this.setState({
             isScheduleOpen: true,
@@ -86,19 +86,24 @@ class CampaignTable extends PureComponent {
           <Text text="no data found" />
         ) : (
           <table>
-            <tr>
-              {tableHeads.map(tableHead => (
-                <th>{tableHead}</th>
+            <thead>
+              <tr>
+                {tableHeads.map(tableHead => (
+                  <th>{tableHead}</th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {filteredCampaignData.map((campaign, index) => (
+                <CampaignRow
+                  actionElements={actionElements}
+                  showCampaignType={showCampaignType}
+                  {...campaign}
+                  index={index}
+                  key={campaign.name}
+                />
               ))}
-            </tr>
-            {filteredCampaignData.map((campaign, index) => (
-              <CampaignRow
-                actionElements={actionElements}
-                showCampaignType={showCampaignType}
-                {...campaign}
-                index={index}
-              />
-            ))}
+            </tbody>
           </table>
         )}
         <Popup
@@ -116,7 +121,7 @@ class CampaignTable extends PureComponent {
             <Calendar
               onChange={this.onChangeDate}
               value={this.state.date}
-              minDate={this.state.date}
+              minDate={new Date()}
               className='datepicker-component'
             />
           </div>

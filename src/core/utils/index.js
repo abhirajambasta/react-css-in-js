@@ -1,8 +1,13 @@
+const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+
 export const composeDate = timeStamp => {
   const date = timeStamp ? new Date(timeStamp) : new Date();
   return {
     formattedDate: `${date.getDate()}-${date.getMonth() + 1}-${date.getFullYear()}`,
-    date
+    date,
+    displayDate: `${monthNames[date.getMonth()]} ${date.getFullYear()}, ${date.getDate()}`,
   };
 };
 

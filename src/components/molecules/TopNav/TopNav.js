@@ -11,29 +11,12 @@ import styles from './TopNav.style';
 class AddNew extends PureComponent {
   render() {
     const imagePath = `images/logo.png`;
-    const { navText = 'BETA', className } = this.props;
+    const { className } = this.props;
     return (
       <div className={className}>
-        <ul>
-          <li>
-            <Anchor>
-              <Image src={imagePath} alt="add-new" height={24} width={24} />
-            </Anchor>
-          </li>
-          <li style={{float:'right'}}>
-            <Button onClick={this.openModal}>
-              <Text text={navText} />
-              <Image
-                src={imagePath}
-                alt="add-new"
-                height={24}
-                width={24}
-                type='span'
-                inheritedClass="sidebar-class"
-              />
-            </Button>
-          </li>
-        </ul>
+        <Anchor>
+          <Image src={imagePath} alt="add-new" height={64} width={64} />
+        </Anchor>
       </div>
     );
   }

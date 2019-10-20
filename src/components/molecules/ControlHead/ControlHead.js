@@ -22,18 +22,16 @@ class ControlHead extends PureComponent {
         value: 'past',
       },
     ];
-    const { headTextPrimary = 'Manage', headTextSecondary = 'Campaigns', onTypeSelection, showCampaignType, className } = this.props;
+    const { headTextPrimary = 'Manage Campaigns', onTypeSelection, showCampaignType, className } = this.props;
     return (
       <div className={className}>
-        <h1>
-          <Text text={headTextPrimary} />
-          <Text text={headTextSecondary} inheritedClass="campaign-head"/>
-        </h1>
-        <ul>
+        <Text text={headTextPrimary} Type="h1" />
+        <ul className="button-group">
           {
             buttonList.map(buttonItem => (
               <Button
                 onClick={() => onTypeSelection(buttonItem.value)}
+                key={buttonItem.value}
                 inheritedClass={`${showCampaignType === buttonItem.value ? 'selected-button': ''} campaign-button`}
               >
                 <Text text={buttonItem.name} />
