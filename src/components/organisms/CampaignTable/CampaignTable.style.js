@@ -15,4 +15,13 @@ export default css`
     padding: 8px;
     border: 1px solid #000;
   }
+
+  .modal {
+    display: flex;
+    justify-content: center;
+  }
+
+  table ~ .popup-overlay .modal-container-content {
+    width: auto !important;
+  }
 `;

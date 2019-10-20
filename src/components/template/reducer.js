@@ -1,4 +1,4 @@
-import { CREATE_NEW_ITEM } from '../organisms/CreateNewModal/constants';
+import { CREATE_NEW_ITEM } from '../organisms/CampaignTable/constants';
 
 import initialState from './initialState';
 
@@ -8,7 +8,7 @@ export default (state = initialState, action ) => {
   switch(type) {
     case CREATE_NEW_ITEM:
       return Object.assign({}, state, {
-        campaignsData: [ ...state.campaignsData, payload.formInputData],
+        campaignsData: [ ...state.campaignsData, payload],
       })
     default:
         return state;

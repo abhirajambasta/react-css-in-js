@@ -41,7 +41,7 @@ class CampaignRow extends PureComponent {
   };
 
   render() {
-    const { actionElements, showCampaignType, name, country, logo, date, className } = this.props;
+    const { actionElements, showCampaignType, name, country, logo, date, className, index } = this.props;
     const viewPricingImage = '';
     const viewPricingLabel = 'View Pricing';
     return (
@@ -70,7 +70,7 @@ class CampaignRow extends PureComponent {
         <td>
           {actionElements.map(({ name, image, onClick }) => {
             return !!onClick ? (
-              <span onClick={onClick} className="item-component">
+              <span onClick={() => onClick(index)} className="item-component">
                 <Image src={image} alt={name} />
                 <Text text={name} />
               </span>

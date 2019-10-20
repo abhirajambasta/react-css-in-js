@@ -2,10 +2,10 @@ import React, { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import withStyles from '../../../core/hoc/withStyles';
 import Popup from 'reactjs-popup';
+import Calendar from 'react-calendar';
 
 import { createNewItemAction } from './action';
 import Text from '../../atoms/Text';
-import CreateNewModal from '../CreateNewModal';
 import CampaignRow from '../../molecules/CampaignRow';
 
 import styles from './CampaignTable.style';
@@ -15,6 +15,8 @@ import { composeDate } from '../../../core/utils';
 class CampaignTable extends PureComponent {
   state = {
     isScheduleOpen: false,
+    date: new Date(),
+    selectedIndex: undefined,
   };
 
   closeModal = () => {
@@ -23,8 +25,24 @@ class CampaignTable extends PureComponent {
     });
   };
 
+  onChangeDate = date => {
+    const { createNewEntry, campaignsData } = this.props;
+    const { selectedIndex } = this.state;
+    this.setState({
+      date,
+    }, () => {
+      this.closeModal();
+      const selectedCampaign = campaignsData.find((item, itemIndex) => itemIndex === selectedIndex);
+      createNewEntry({
+        ...selectedCampaign,
+        date: (new Date(date)).getTime(),
+      });
+    });
+  }
+
+
   render() {
-    const { campaignsData, className, showCampaignType, createNewEntry } = this.props;
+    const { campaignsData, className, showCampaignType } = this.props;
     const tableHeads = ['Date', 'Campaign', 'View', 'Actions'];
 
     let filteredCampaignData = campaignsData;
@@ -53,10 +71,11 @@ class CampaignTable extends PureComponent {
       {
         name: 'SCHEDULE AGAIN',
         image: '',
-        onClick: () =>
+        onClick: index =>
           this.setState({
             isScheduleOpen: true,
             isInfo: false,
+            selectedIndex: index,
           }),
       },
     ];
@@ -72,11 +91,12 @@ class CampaignTable extends PureComponent {
                 <th>{tableHead}</th>
               ))}
             </tr>
-            {filteredCampaignData.map(campaign => (
+            {filteredCampaignData.map((campaign, index) => (
               <CampaignRow
                 actionElements={actionElements}
                 showCampaignType={showCampaignType}
                 {...campaign}
+                index={index}
               />
             ))}
           </table>
@@ -93,7 +113,12 @@ class CampaignTable extends PureComponent {
           className="modal-container"
         >
           <div className="modal">
-            <CreateNewModal closeModal={this.closeModal} createNewEntry={createNewEntry} />
+            <Calendar
+              onChange={this.onChangeDate}
+              value={this.state.date}
+              minDate={this.state.date}
+              className='datepicker-component'
+            />
           </div>
         </Popup>
       </div>
